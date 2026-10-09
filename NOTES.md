@@ -20,6 +20,9 @@ Decisions made and benchmark numbers, kept as we go.
 - Long URLs are validated twice: Zod in the app (http/https only, max 2048) and a `CHECK` constraint in the database.
 - Integration tests use real Postgres and Redis through Testcontainers, not mocks.
 - Emails are stored lowercased; failed logins return one generic "invalid credentials" error.
+- Postgres is pinned to major version 16 (long-established, widely deployed); Redis to 7.
+- `.env` is loaded with Node's built-in `--env-file` flag, so no dotenv/config package is needed. Config is validated with Zod in `src/config/config.ts` before Nest starts.
+- TypeScript uses `"strict": true` (the Nest CLI's `--strict` only enables two checks).
 - Raw SQL, no ORM: see `docs/adr/0001-raw-sql-no-orm.md`.
 - Clicks go through a queue: see `docs/adr/0002-clicks-recorded-through-a-queue.md`.
 

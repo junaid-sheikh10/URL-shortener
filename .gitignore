@@ -1,0 +1,19 @@
+# dependencies and build output
+node_modules/
+dist/
+coverage/
+*.tsbuildinfo
+
+# secrets: only .env.example is committed
+.env
+.env.*
+!.env.example
+
+# editor and OS
+.vscode/
+.idea/
+.DS_Store
+
+# Claude Code local files
+.claude/settings.local.json
+node_modules
